@@ -1,0 +1,34 @@
+import * as React from 'react';
+import './App.css';
+
+
+interface IApp {
+    carrier: string,
+    category: string,
+    containerNumber: string,
+    containerState: string,
+    emptyReturnDepot: string,
+    port: string,
+    timeIn: string,
+    timeOut: string,
+}
+
+class Lyttleton extends React.Component<{}, IApp> {
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            carrier: "",
+            category: "",
+            containerNumber: "",
+            containerState: "",
+            emptyReturnDepot: "",
+            port: "",
+            timeIn: "",
+            timeOut: "",
+        }
+    }
+
+
+
+}
