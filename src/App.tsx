@@ -54,6 +54,7 @@ class App extends React.Component<{}, IApp> {
       showmeAuckland:"",
       condet_Num:"",
       showmeTauranga:"",
+      
     }
     this.storeContainerValue = this.storeContainerValue.bind(this);
     this.searchContainer = this.searchContainer.bind(this);
@@ -62,6 +63,7 @@ class App extends React.Component<{}, IApp> {
     this.searchOtagoContainer= this.searchOtagoContainer.bind(this)
     this.searchTimaruContainer= this.searchTimaruContainer.bind(this)
     this.searhTaurangaDetails=this.searhTaurangaDetails.bind(this)
+    this.searchAucklandContainer=this.searchAucklandContainer.bind(this)
   }
 
   public render() {
@@ -97,11 +99,12 @@ class App extends React.Component<{}, IApp> {
   }
   
   public loopCallWeb= () =>{
-    this.searchContainer()
-    this.searchLyttletonContainer()
-    this.searchKiwirailContainer()
-    this.searchOtagoContainer()
-    this.searchTimaruContainer()
+    // this.searchContainer()
+    // this.searchLyttletonContainer()
+    // this.searchKiwirailContainer()
+    // this.searchOtagoContainer()
+    // this.searchTimaruContainer()
+    this.searchAucklandContainer()
   }
 
   public searchContainer() {
@@ -218,6 +221,20 @@ class App extends React.Component<{}, IApp> {
       )
 
   }
+
+  public searchAucklandContainer() {
+    const xhr = new XMLHttpRequest();
+    const aucklandContainer = this.state.containers
+    xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://one.axis-intermodal.co.nz/OnEvent/DashboardServices/DataExport.svc/ContainerTrackingDetails?isImport=true&containerNo=%22"+aucklandContainer+"%22");
+    xhr.onload = (event: any) => {
+      
+      console.log(JSON.parse(event.target.response))
+      this.setState({ showmeAuckland: event.target.response })
+    };
+    xhr.send("")
+
+  }
+
 }
 
 export default App;
